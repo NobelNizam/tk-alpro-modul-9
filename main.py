@@ -62,7 +62,7 @@ def mark_done():
     if selected_task:
         task = todo_list.get(selected_task)
         todo_list.delete(selected_task)
-        todo_list.insert("end", f"{task} ✔")
+        todo_list.insert("end", f"{task} ✔")import logging
 
 
 
@@ -95,6 +95,19 @@ def mark_done():
 
 
 
+
+# Notes Tab
+notes_tab = ttk.Frame(notebook)
+notebook.add(notes_tab, text="Notes")
+
+notes_text = tk.Text(notes_tab, wrap="word", font=("Times New Roman", 12))
+notes_text.pack(expand=1, fill="both", padx=10, pady=10)
+
+notes_buttons_frame = tk.Frame(notes_tab)
+notes_buttons_frame.pack(pady=10)
+
+tk.Button(notes_buttons_frame, text="Save", command=save_note).pack(side="left", padx=5)
+tk.Button(notes_buttons_frame, text="Load", command=load_note).pack(side="left", padx=5)
 
 
 
