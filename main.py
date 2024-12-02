@@ -45,6 +45,24 @@ def load_note():
     else:
         messagebox.showinfo("Load", "No saved notes found.")
 
+# To-Do List functionality
+def add_task():
+    task = todo_entry.get()
+    if task:
+        todo_list.insert("end", task)
+        todo_entry.delete(0, "end")
+
+def delete_task():
+    selected_task = todo_list.curselection()
+    if selected_task:
+        todo_list.delete(selected_task)
+
+def mark_done():
+    selected_task = todo_list.curselection()
+    if selected_task:
+        task = todo_list.get(selected_task)
+        todo_list.delete(selected_task)
+        todo_list.insert("end", f"{task} ✔")
 
 
 
@@ -79,3 +97,30 @@ def load_note():
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+# To-Do List Tab
+todo_tab = ttk.Frame(notebook)
+notebook.add(todo_tab, text="To-Do List")
+
+todo_entry = tk.Entry(todo_tab, font=("Times New Roman", 14))
+todo_entry.pack(pady=10)
+
+todo_buttons_frame = tk.Frame(todo_tab)
+todo_buttons_frame.pack(pady=10)
+
+tk.Button(todo_buttons_frame, text="Add", command=add_task).pack(side="left", padx=5)
+tk.Button(todo_buttons_frame, text="Delete", command=delete_task).pack(side="left", padx=5)
+tk.Button(todo_buttons_frame, text="Mark Done", command=mark_done).pack(side="left", padx=5)
+
+todo_list = tk.Listbox(todo_tab, font=("Times New Roman", 12))
+todo_list.pack(expand=1, fill="both", padx=10, pady=10)
