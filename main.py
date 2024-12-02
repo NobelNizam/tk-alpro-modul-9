@@ -1,0 +1,1 @@
+print("Aplikasi Mini Tkinter")
