@@ -29,3 +29,18 @@ def countdown(time_left):
     else:
         timer_display.config(text="Time's up!")
         messagebox.showinfo("Timer", "Time's up!")
+
+# Notes functionality
+def save_note():
+    note_content = notes_text.get("1.0", "end-1c")
+    with open("notes.txt", "w") as f:
+        f.write(note_content)
+    messagebox.showinfo("Save", "Note saved successfully!")
+
+def load_note():
+    if os.path.exists("notes.txt"):
+        with open("notes.txt", "r") as f:
+            notes_text.delete("1.0", "end")
+            notes_text.insert("1.0", f.read())
+    else:
+        messagebox.showinfo("Load", "No saved notes found.")
