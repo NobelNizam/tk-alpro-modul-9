@@ -29,3 +29,46 @@ def countdown(time_left):
     else:
         timer_display.config(text="Time's up!")
         messagebox.showinfo("Timer", "Time's up!")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Calculator functionality
+def calculate():
+    try:
+        result = eval(calc_entry.get())
+        calc_entry.delete(0, "end")
+        calc_entry.insert("end", str(result))
+    except Exception:
+        messagebox.showerror("Error", "Invalid calculation.")
