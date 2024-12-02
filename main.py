@@ -30,6 +30,20 @@ def countdown(time_left):
         timer_display.config(text="Time's up!")
         messagebox.showinfo("Timer", "Time's up!")
 
+# Notes functionality
+def save_note():
+    note_content = notes_text.get("1.0", "end-1c")
+    with open("notes.txt", "w") as f:
+        f.write(note_content)
+    messagebox.showinfo("Save", "Note saved successfully!")
+
+def load_note():
+    if os.path.exists("notes.txt"):
+        with open("notes.txt", "r") as f:
+            notes_text.delete("1.0", "end")
+            notes_text.insert("1.0", f.read())
+    else:
+        messagebox.showinfo("Load", "No saved notes found.")
 
 
 
@@ -64,11 +78,4 @@ def countdown(time_left):
 
 
 
-# Calculator functionality
-def calculate():
-    try:
-        result = eval(calc_entry.get())
-        calc_entry.delete(0, "end")
-        calc_entry.insert("end", str(result))
-    except Exception:
-        messagebox.showerror("Error", "Invalid calculation.")
+
